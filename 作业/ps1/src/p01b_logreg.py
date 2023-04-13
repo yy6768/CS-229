@@ -18,10 +18,10 @@ def main(train_path, eval_path, pred_path):
     logistic_regression = LogisticRegression()
     logistic_regression.fit(x_train, y_train)
 
-    x_eval, y_eval = util.load_dataset(eval_path)
+    x_eval, y_eval = util.load_dataset(eval_path, add_intercept=True)
     y_hat = logistic_regression.predict(x_eval)
     util.plot(x_train, y_train, logistic_regression.theta, 'output/p01b_{}.png'.format(pred_path[-5]))
-    np.savetxt(pred_path, np.array(y_hat), fmt="%d")
+    np.savetxt(pred_path, np.array(list(zip(y_hat > 0.5, y_eval))), fmt='%d')
     # *** END CODE HERE ***
 
 
@@ -64,8 +64,6 @@ class LogisticRegression(LinearModel):
         # *** START CODE HERE ***
         # init
         m, n = x.shape
-        x0 = np.ones(m)
-        np.insert(x, n, x0, axis=1)
 
         if self.theta is None:
             self.theta = np.zeros(n)
@@ -79,7 +77,7 @@ class LogisticRegression(LinearModel):
             gradient = self.grad(x, y)
             delta = ini_hessian @ gradient
             self.theta -= delta
-            # print(f'theta:\n {self.theta}')
+
             k += 1
             if np.linalg.norm(delta, ord=1) < self.eps:
                 break
@@ -96,10 +94,5 @@ class LogisticRegression(LinearModel):
             Outputs of shape (m,).
         """
         # *** START CODE HERE ***
-        m, n = x.shape
-        x0 = np.ones(m)
-        x = np.insert(x, n, x0, axis=1)
-        h_theta = logistic(x @ self.theta)
-        y_hat = [0 if x > 0.5 else 1 for x in h_theta]
-        return y_hat
+        return logistic(x @ self.theta)
         # *** END CODE HERE ***
