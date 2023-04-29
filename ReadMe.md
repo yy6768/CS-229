@@ -8,13 +8,19 @@ Stanford CS229 吴恩达 自用学习笔记
 - [x] Lecture 2
 - [x] Lecture 3
 - [x] Lecture 4
-- [x] Lecture 5
-- [x] Lecture 6
-- [x] Lecture 7
+- [x] Lecture 5 (线性模型完结)
+- [x] Lecture 6 
+- [x] Lecture 7 （Bayes & SVM)
 - [x] Lecture 8
 - [x] Lecture 9
-- [ ] Lecture 10
-- [ ] Lecture 11
+- [x] Lecture 10 （决策树完结）
+- [x] Lecture 11
+- [x] Lecture 12 (DL 神经网络)
+- [x] Lecture 13
+- [x] Lecture 14
+- [x] Lecture 15 （EM和factor)
+- [ ] Lecture 16 
+- [ ] Lecture 17
 
 作业实现仅供参考
 
@@ -24,7 +30,7 @@ Stanford CS229 吴恩达 自用学习笔记
 
 - [x] PS2
 
-- [ ] PS3
+- [x] PS3
 
 - [ ] PS4
 
